@@ -207,7 +207,6 @@ if not IS_ROCM_PYTORCH:
 else:
 # build for ROCm
   cc_flag = []
-  cc_flag.append("--offload-arch=native")
                         
   if int(os.environ.get('FLASH_ATTENTION_INTERNAL_USE_RTN', 0)):
     print("RTN IS USED")
