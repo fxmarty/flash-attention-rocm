@@ -5,7 +5,7 @@
 #include <torch/extension.h>
 #include <c10/cuda/CUDAGuard.h>
 
-#include <rotary_cuda.cuh>
+#include "rotary_cda.cuh"
 
 #define CHECK_DEVICE(x) TORCH_CHECK(x.device().type() == torch::kCUDA, #x " must be on CUDA")
 #define CHECK_SHAPE(x, ...) TORCH_CHECK(x.sizes() == torch::IntArrayRef({__VA_ARGS__}), #x " must have shape (" #__VA_ARGS__ ")")
