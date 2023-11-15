@@ -7,6 +7,8 @@
 #include <ATen/native/TensorIterator.h>
 #include <ATen/native/hip/Loops.cuh>
 
+#include "rotary_hip.cuh"
+
 void apply_rotary_cuda(const torch::Tensor x1, const torch::Tensor x2,
                        const torch::Tensor cos, const torch::Tensor sin,
                        torch::Tensor out1, torch::Tensor out2,

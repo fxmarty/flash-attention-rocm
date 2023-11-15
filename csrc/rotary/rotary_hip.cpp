@@ -6,13 +6,10 @@
 #include <torch/extension.h>
 #include <ATen/hip/impl/HIPGuardImplMasqueradingAsCUDA.h>
 
+#include <rotary_cuda.cuh>
+
 #define CHECK_DEVICE(x) TORCH_CHECK(x.device().type() == torch::kCUDA, #x " must be on CUDA")
 #define CHECK_SHAPE(x, ...) TORCH_CHECK(x.sizes() == torch::IntArrayRef({__VA_ARGS__}), #x " must have shape (" #__VA_ARGS__ ")")
-
-void apply_rotary_cuda(const torch::Tensor x1, const torch::Tensor x2,
-                       const torch::Tensor cos, const torch::Tensor sin,
-                       torch::Tensor out1, torch::Tensor out2,
-                       const bool conj);
 
 void apply_rotary(const torch::Tensor x1, const torch::Tensor x2,
                   const torch::Tensor cos, const torch::Tensor sin,
