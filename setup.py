@@ -25,6 +25,7 @@ from torch.utils.cpp_extension import (
     CUDAExtension,
     CUDA_HOME,
     ROCM_HOME,
+    IS_HIP_EXTENSION,
 )
 
 
@@ -118,7 +119,7 @@ def validate_and_update_archs(archs):
 cmdclass = {}
 ext_modules = []
 
-IS_ROCM = False
+IS_ROCM = IS_HIP_EXTENSION
 if not SKIP_CUDA_BUILD:
     if torch.cuda.is_available():
         device_name = torch.cuda.get_device_name(0)
